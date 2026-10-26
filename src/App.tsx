@@ -14,7 +14,6 @@ export function App() {
           (Press <kbd>d</kbd> to toggle dark mode)
         </div>
       </div>
-      Sample
     </div>
   )
 }
