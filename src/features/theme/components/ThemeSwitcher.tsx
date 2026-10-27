@@ -22,8 +22,7 @@ export const ThemeSwitcher = () => {
     >
       <ToggleGroupItem
         value={ThemeMode.Light}
-        aria-label="Use light theme"
-        className="gap-2 rounded-md px-3 data-[state=on]:bg-card data-[state=on]:shadow-sm"
+        className="gap-2 rounded-md px-3 hover:bg-card/80 data-pressed:bg-card data-pressed:shadow-sm"
       >
         <Sun className="size-4" />
         Light
@@ -31,8 +30,7 @@ export const ThemeSwitcher = () => {
 
       <ToggleGroupItem
         value={ThemeMode.Dark}
-        aria-label="Use dark theme"
-        className="gap-2 rounded-md px-3 data-[state=on]:bg-card data-[state=on]:shadow-sm"
+        className="gap-2 rounded-md px-3 hover:bg-card/80 data-pressed:bg-card data-pressed:shadow-sm"
       >
         <Moon className="size-4" />
         Dark
