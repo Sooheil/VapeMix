@@ -1,5 +1,5 @@
 import { Moon, Sun } from "lucide-react"
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+import { ToggleGroup, ToggleGroupItem } from "@/components"
 import { useTheme } from "../hooks/themeHook"
 import { ThemeMode } from "../theme.types"
 
