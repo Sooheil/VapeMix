@@ -1,6 +1,7 @@
 import { Droplets, Save } from "lucide-react"
+import { ThemeSwitcher } from "@/features/theme"
+
 import { Button } from "../ui/button"
-import { ThemeSwitcher } from "../themeSwitcher"
 
 export const Header = () => {
   return (
