@@ -66,6 +66,7 @@
   --accent: #ecfdf5;
   --accent-foreground: #047857;
   --destructive: oklch(0.577 0.245 27.325);
+  --outline: #5856f9;
   --border: #e2e8f0;
   --input: #e2e8f0;
   --ring: #5856f9;

@@ -12,6 +12,15 @@ export { Button } from "./ui/button"
 export { ToggleGroup, ToggleGroupItem } from "./ui/toggle-group"
 export { Input } from "./ui/input"
 export {
+  Table,
+  TableHeader,
+  TableBody,
+  TableFooter,
+  TableHead,
+  TableRow,
+  TableCell,
+} from "./ui/table"
+export {
   InputGroup,
   InputGroupInput,
   InputGroupAddon,
