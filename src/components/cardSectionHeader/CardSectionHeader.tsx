@@ -3,8 +3,8 @@ import type { CardSectionHeaderProps } from "./CardSectionHeader.types"
 
 export const CardSectionHeader = ({
   number,
-  titleHeader,
-  titleDescription,
+  header: titleHeader,
+  description: titleDescription,
 }: CardSectionHeaderProps) => {
   return (
     <CardHeader className="flex gap-4">
@@ -13,7 +13,7 @@ export const CardSectionHeader = ({
       </span>
       <div>
         <CardTitle className="font-extrabold">{titleHeader}</CardTitle>
-        <CardDescription>{titleDescription}</CardDescription>
+        <CardDescription className="italic">{titleDescription}</CardDescription>
       </div>
     </CardHeader>
   )

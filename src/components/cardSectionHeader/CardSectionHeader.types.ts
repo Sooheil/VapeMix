@@ -1,5 +1,5 @@
 export interface CardSectionHeaderProps {
   number: number
-  titleHeader: string
-  titleDescription: string
+  header: string
+  description: string
 }
