@@ -2,12 +2,14 @@ import {
   Card,
   CardContent,
   CardSectionHeader,
-  Input,
   UnitInput,
+  PgVgSlider,
 } from "@/components"
 import { FormSection } from "@/components/formSection/FormSection"
+import { useState } from "react"
 
 export const RecipeGoal = () => {
+  const [pg, setPg] = useState(50)
   return (
     <Card>
       <CardSectionHeader
@@ -32,7 +34,7 @@ export const RecipeGoal = () => {
             <UnitInput type="number" defaultValue={3} inputGroupText="mg/ml" />
           </FormSection>
           <FormSection icon="droplet" title="Target PG/VG Ratio">
-            <Input type="number" min={0} defaultValue={100} />
+            <PgVgSlider value={pg} onChange={setPg} />
           </FormSection>
         </div>
       </CardContent>

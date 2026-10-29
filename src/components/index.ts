@@ -18,3 +18,4 @@ export {
   InputGroupText,
 } from "./ui/input-group"
 export { UnitInput } from "./unitInput/UnitInput"
+export { PgVgSlider } from "./pgVgSlider/PgVgSlider"
