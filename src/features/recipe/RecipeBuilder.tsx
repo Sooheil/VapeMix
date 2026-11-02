@@ -2,6 +2,7 @@ import { useState } from "react"
 import { RecipeForm } from "./components/recipeForm/RecipeForm"
 import type { Flavoring } from "./components/recipeForm/RecipeForm.types"
 import { RecipeResult } from "./components/recipeResult/RecipeResult"
+import { calculateRecipe } from "./utils/calculateRecipe"
 
 export const RecipeBuilder = () => {
   const [targetNic, setTargetNic] = useState<number>(20)
@@ -17,7 +18,22 @@ export const RecipeBuilder = () => {
       base: "PG",
     },
   ])
-
+  const result = calculateRecipe({
+    finalVolume: 100,
+    targetNic: 20,
+    targetPgPercent: 50,
+    nicBase: 50,
+    nicBasePgPercent: 50,
+    flavorings: [
+      {
+        id: "strawberry",
+        name: "Strawberry",
+        percentage: 5,
+        base: "PG",
+      },
+    ],
+  })
+  console.log(result)
   return (
     <div className="m-4 grid grid-cols-2 gap-4">
       <RecipeForm
