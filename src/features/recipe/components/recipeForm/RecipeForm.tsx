@@ -8,7 +8,7 @@ export const RecipeForm = (props: RecipeFormProps) => {
     <div className="flex flex-col gap-4">
       <RecipeGoal {...props} />
       <NicotineBase {...props} />
-      <Flavorings />
+      <Flavorings {...props} />
     </div>
   )
 }

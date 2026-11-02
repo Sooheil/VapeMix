@@ -1,9 +1,4 @@
-export type Flavoring = {
-  id: string
-  name: string
-  percentage: number
-  base: "PG" | "VG"
-}
+import type { Flavoring } from "../../../RecipeForm.types"
 
 export interface FlavoringRowProps {
   flavor: Flavoring

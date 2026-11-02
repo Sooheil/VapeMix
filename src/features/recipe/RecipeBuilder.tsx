@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { RecipeForm } from "./components/recipeForm/RecipeForm"
+import type { Flavoring } from "./components/recipeForm/RecipeForm.types"
 import { RecipeResult } from "./components/recipeResult/RecipeResult"
 
 export const RecipeBuilder = () => {
@@ -8,6 +9,14 @@ export const RecipeBuilder = () => {
   const [targetPgPercent, setTargetPgPercent] = useState(50)
   const [nicBase, setNicBase] = useState(50)
   const [nicBasePgPercent, setNicBasePgPercent] = useState(50)
+  const [flavorings, setFlavorings] = useState<Flavoring[]>(() => [
+    {
+      id: crypto.randomUUID(),
+      name: "",
+      percentage: 5,
+      base: "PG",
+    },
+  ])
 
   return (
     <div className="m-4 grid grid-cols-2 gap-4">
@@ -22,6 +31,8 @@ export const RecipeBuilder = () => {
         onNicBaseChange={setNicBase}
         nicBasePgPercent={nicBasePgPercent}
         onNicBasePgPercent={setNicBasePgPercent}
+        flavorings={flavorings}
+        onFlavoringsChange={setFlavorings}
       />
       <RecipeResult />
     </div>

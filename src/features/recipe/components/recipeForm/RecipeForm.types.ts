@@ -1,19 +1,33 @@
-type inputValueType = (value: number) => void
+type NumberChangeHandler = (value: number) => void
+
+export type Flavoring = {
+  id: string
+  name: string
+  percentage: number
+  base: "PG" | "VG"
+}
 
 export interface RecipeGoalProps {
   targetNic: number
-  onTargetNicChange: inputValueType
+  onTargetNicChange: NumberChangeHandler
   finalVolume: number
-  onFinalVolumeChange: inputValueType
+  onFinalVolumeChange: NumberChangeHandler
   targetPgPercent: number
-  onTargetPgPercent: inputValueType
+  onTargetPgPercent: NumberChangeHandler
 }
 
 export interface NicotineBaseProps {
   nicBase: number
-  onNicBaseChange: inputValueType
+  onNicBaseChange: NumberChangeHandler
   nicBasePgPercent: number
-  onNicBasePgPercent: inputValueType
+  onNicBasePgPercent: NumberChangeHandler
 }
 
-export type RecipeFormProps = RecipeGoalProps & NicotineBaseProps
+export interface FlavoringsProps {
+  flavorings: Flavoring[]
+  onFlavoringsChange: (flavorings: Flavoring[]) => void
+}
+
+export type RecipeFormProps = RecipeGoalProps &
+  NicotineBaseProps &
+  FlavoringsProps

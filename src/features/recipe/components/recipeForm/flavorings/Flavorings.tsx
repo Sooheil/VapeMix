@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { CirclePlus } from "lucide-react"
 import {
   Card,
@@ -11,36 +10,35 @@ import {
   TableRow,
 } from "@/components"
 import { Button } from "@/components/ui/button"
-import type { Flavoring } from "./components/flavoringRow/FlavoringRow.types"
+import type { Flavoring, FlavoringsProps } from "../RecipeForm.types"
 import { FlavoringRow } from "./components/flavoringRow/FlavoringRow"
 
 const percentageFormatter = new Intl.NumberFormat("en-US", {
   maximumFractionDigits: 2,
 })
 
-export const Flavorings = () => {
-  const [flavors, setFlavors] = useState<Flavoring[]>([
-    { id: crypto.randomUUID(), name: "", percentage: 5, base: "PG" },
-  ])
-
+export const Flavorings = ({
+  flavorings,
+  onFlavoringsChange,
+}: FlavoringsProps) => {
   const addFlavor = () => {
-    setFlavors((prev) => [
-      ...prev,
+    onFlavoringsChange([
+      ...flavorings,
       { id: crypto.randomUUID(), name: "", percentage: 0, base: "PG" },
     ])
   }
 
   const updateFlavor = (updated: Flavoring) => {
-    setFlavors((prev) =>
-      prev.map((flavor) => (flavor.id === updated.id ? updated : flavor))
+    onFlavoringsChange(
+      flavorings.map((flavor) => (flavor.id === updated.id ? updated : flavor))
     )
   }
 
   const removeFlavor = (id: string) => {
-    setFlavors((prev) => prev.filter((flavor) => flavor.id !== id))
+    onFlavoringsChange(flavorings.filter((flavor) => flavor.id !== id))
   }
 
-  const totalPercentage = flavors.reduce(
+  const totalPercentage = flavorings.reduce(
     (total, flavor) => total + flavor.percentage,
     0
   )
@@ -74,7 +72,7 @@ export const Flavorings = () => {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {flavors.map((flavor, index) => (
+              {flavorings.map((flavor, index) => (
                 <FlavoringRow
                   key={flavor.id}
                   rowNumber={index + 1}

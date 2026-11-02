@@ -6,7 +6,7 @@ import {
   PgVgSlider,
 } from "@/components"
 import { FormSection } from "@/components/formSection/FormSection"
-import type { RecipeGoalProps } from "./RecipeGoal.types"
+import type { RecipeGoalProps } from "../RecipeForm.types"
 
 export const RecipeGoal = ({
   targetNic,
