@@ -9,11 +9,18 @@ import type { UnitInputProps } from "./UnitInput.types"
 export const UnitInput = ({
   type = "number",
   defaultValue,
+  value,
   inputGroupText,
+  onInputChange,
 }: UnitInputProps) => {
   return (
     <InputGroup>
-      <InputGroupInput type={type} defaultValue={defaultValue} />
+      <InputGroupInput
+        type={type}
+        defaultValue={defaultValue}
+        value={value}
+        onChange={(e) => onInputChange?.(Number(e.target.value))}
+      />
       {!!inputGroupText && (
         <InputGroupAddon
           align="inline-end"

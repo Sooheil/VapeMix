@@ -6,10 +6,16 @@ import {
   PgVgSlider,
 } from "@/components"
 import { FormSection } from "@/components/formSection/FormSection"
-import { useState } from "react"
+import type { RecipeGoalProps } from "./RecipeGoal.types"
 
-export const RecipeGoal = () => {
-  const [pg, setPg] = useState(50)
+export const RecipeGoal = ({
+  targetNic,
+  finalVolume,
+  targetPgPercent,
+  onTargetNicChange,
+  onFinalVolumeChange,
+  onTargetPgPercent,
+}: RecipeGoalProps) => {
   return (
     <Card>
       <CardSectionHeader
@@ -24,17 +30,28 @@ export const RecipeGoal = () => {
             title="Final Volume (ml)"
             className="border-r"
           >
-            <UnitInput type="number" defaultValue={100} inputGroupText="ml" />
+            <UnitInput
+              type="number"
+              defaultValue={finalVolume}
+              value={finalVolume}
+              onInputChange={onFinalVolumeChange}
+              inputGroupText="ml"
+            />
           </FormSection>
           <FormSection
             icon="chart-no-axes-column"
             title="Target Nicotine (mg/ml)"
             className="border-r"
           >
-            <UnitInput type="number" defaultValue={3} inputGroupText="mg/ml" />
+            <UnitInput
+              type="number"
+              value={targetNic}
+              onInputChange={onTargetNicChange}
+              inputGroupText="mg/ml"
+            />
           </FormSection>
           <FormSection icon="droplet" title="Target PG/VG Ratio">
-            <PgVgSlider value={pg} onChange={setPg} />
+            <PgVgSlider value={targetPgPercent} onChange={onTargetPgPercent} />
           </FormSection>
         </div>
       </CardContent>

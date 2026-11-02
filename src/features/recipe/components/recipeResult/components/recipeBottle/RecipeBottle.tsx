@@ -20,7 +20,7 @@ export const RecipeBottle = ({
   return (
     <svg
       viewBox="0 0 180 300"
-      className="h-75 w-auto"
+      className="h-55 w-auto"
       xmlns="http://www.w3.org/2000/svg"
       role="img"
       aria-label="Recipe ingredient composition"
@@ -34,9 +34,9 @@ export const RecipeBottle = ({
       {/* Bottle cap */}
       <rect
         x="73"
-        y="10"
+        y="40"
         width="34"
-        height="65"
+        height="35"
         rx="8"
         fill="#94A3B8"
         stroke="#64748B"

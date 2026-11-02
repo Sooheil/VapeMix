@@ -1,7 +1,6 @@
 import { Header } from "@/components/header"
 import { ThemeContext, useThemeState } from "@/features/theme"
-import { RecipeForm } from "./features/recipe/components/recipeForm/RecipeForm"
-import { RecipeResult } from "./features/recipe/components/recipeResult/RecipeResult"
+import { RecipeBuilder } from "./features/recipe/RecipeBuilder"
 
 export function App() {
   const themeState = useThemeState()
@@ -9,10 +8,7 @@ export function App() {
   return (
     <ThemeContext.Provider value={themeState}>
       <Header />
-      <div className="m-4 grid grid-cols-2">
-        <RecipeForm />
-        <RecipeResult />
-      </div>
+      <RecipeBuilder />
     </ThemeContext.Provider>
   )
 }
