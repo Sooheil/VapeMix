@@ -78,3 +78,8 @@ export interface IngredientsTableProps {
   totalVolume: number
   totalWeight: number
 }
+
+export type RecipeCompositionProps = Pick<
+  IngredientsTableProps,
+  "ingredients" | "totalVolume"
+>

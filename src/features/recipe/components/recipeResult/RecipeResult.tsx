@@ -8,6 +8,8 @@ import {
   VG_COLOR,
 } from "./RecipeResult.const"
 import { IngredientsTable } from "./components/ingredientsTable/IngredientsTable"
+import { RecipeComposition } from "./components/recipeComposition/RecipeComposition"
+import { RecipeStatus } from "./components/recipeStatus/RecipeStatus"
 
 export const RecipeResult = ({ recipeResult }: RecipeResultProps) => {
   const ingredients: Ingredient[] = recipeResult.success
@@ -52,21 +54,36 @@ export const RecipeResult = ({ recipeResult }: RecipeResultProps) => {
       />
 
       <CardContent>
-        {recipeResult.success ? (
-          <div className="grid min-h-48 grid-cols-2 rounded-lg border bg-muted p-3">
-            <RecipeBottle
-              ingredients={ingredients}
-              recipeResultData={recipeResult.data}
-            />
-            <IngredientsTable
-              ingredients={ingredients}
-              totalVolume={recipeResult.data.totalVolume}
-              totalWeight={recipeResult.data.totalWeight}
-            />
+        {recipeResult.success && (
+          <div className="grid gap-2">
+            <div className="grid min-h-48 grid-cols-2 rounded-lg border bg-muted p-3">
+              <RecipeBottle
+                ingredients={ingredients}
+                recipeResultData={recipeResult.data}
+              />
+              <IngredientsTable
+                ingredients={ingredients}
+                totalVolume={recipeResult.data.totalVolume}
+                totalWeight={recipeResult.data.totalWeight}
+              />
+            </div>
+            <div>
+              <RecipeComposition
+                ingredients={ingredients}
+                totalVolume={recipeResult.data.totalVolume}
+              />
+            </div>
           </div>
-        ) : (
-          <p className="text-sm text-destructive">{recipeResult.error}</p>
         )}
+        <RecipeStatus recipeResult={recipeResult} />
+        <div>
+          <span className="block text-xl font-extrabold">Safety</span>{" "}
+          Concentrated nicotine can harm or kill children, pets, or even adults.
+          Please inform yourself of how to mitigate the dangers before you try
+          mixing your own. If you want to be a hundred percent certain about
+          your calculations, you should double check your results using other
+          tools as well.
+        </div>
       </CardContent>
     </Card>
   )
