@@ -19,21 +19,13 @@ export const RecipeBuilder = () => {
     },
   ])
   const result = calculateRecipe({
-    finalVolume: 100,
-    targetNic: 20,
-    targetPgPercent: 50,
-    nicBase: 50,
-    nicBasePgPercent: 50,
-    flavorings: [
-      {
-        id: "strawberry",
-        name: "Strawberry",
-        percentage: 5,
-        base: "PG",
-      },
-    ],
+    finalVolume,
+    targetNic,
+    targetPgPercent,
+    nicBase,
+    nicBasePgPercent,
+    flavorings,
   })
-  console.log(result)
   return (
     <div className="m-4 grid grid-cols-2 gap-4">
       <RecipeForm
@@ -50,7 +42,7 @@ export const RecipeBuilder = () => {
         flavorings={flavorings}
         onFlavoringsChange={setFlavorings}
       />
-      <RecipeResult />
+      <RecipeResult recipeResult={result} />
     </div>
   )
 }

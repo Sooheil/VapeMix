@@ -1,57 +1,8 @@
-export type FlavoringInput = {
-  id: string
-  name: string
-  percentage: number
-  base: "PG" | "VG"
-}
-
-export type RecipeInput = {
-  finalVolume: number
-  targetNic: number
-  targetPgPercent: number
-  nicBase: number
-  nicBasePgPercent: number
-  flavorings: FlavoringInput[]
-}
-
-export type CalculatedFlavoring = FlavoringInput & {
-  volume: number
-  weight: number
-}
-
-export type RecipeCalculation = {
-  totalVolume: number
-  totalWeight: number
-
-  nicotineBaseVolume: number
-  nicotineBaseWeight: number
-
-  pgVolume: number
-  pgWeight: number
-
-  vgVolume: number
-  vgWeight: number
-
-  flavorings: CalculatedFlavoring[]
-
-  composition: {
-    pgVolume: number
-    vgVolume: number
-    pgPercent: number
-    vgPercent: number
-    nicotineStrength: number
-  }
-}
-
-export type RecipeCalculationResult =
-  | {
-      success: true
-      data: RecipeCalculation
-    }
-  | {
-      success: false
-      error: string
-    }
+import type {
+  CalculatedFlavoring,
+  RecipeCalculationResult,
+  RecipeInput,
+} from "../components/recipeResult/RecipeResult.types"
 
 // Approximate densities in g/ml
 const DENSITY = {

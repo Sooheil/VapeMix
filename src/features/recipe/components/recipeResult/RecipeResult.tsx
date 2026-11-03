@@ -1,35 +1,72 @@
 import { Card, CardContent, CardSectionHeader } from "@/components"
 import { RecipeBottle } from "./components/recipeBottle/RecipeBottle"
+import type { Ingredient, RecipeResultProps } from "./RecipeResult.types"
+import {
+  getFlavorColor,
+  NICOTINE_COLOR,
+  PG_COLOR,
+  VG_COLOR,
+} from "./RecipeResult.const"
+import { IngredientsTable } from "./components/ingredientsTable/IngredientsTable"
 
-export const RecipeResult = () => {
-  const ingredients = [
-    { id: "vg", name: "VG", volume: 60, color: "#34CDA2" },
-    { id: "pg", name: "PG", volume: 20, color: "#48AEF5" },
-    {
-      id: "flavorings",
-      name: "Flavorings",
-      volume: 10,
-      color: "#AD68EC",
-    },
-    {
-      id: "nicotine",
-      name: "Nicotine Base",
-      volume: 10,
-      color: "#F45A82",
-    },
-  ]
+export const RecipeResult = ({ recipeResult }: RecipeResultProps) => {
+  const ingredients: Ingredient[] = recipeResult.success
+    ? [
+        {
+          id: "vg",
+          name: "Pure VG",
+          volume: recipeResult.data.vgVolume,
+          weight: recipeResult.data.vgWeight,
+          color: VG_COLOR,
+        },
+        {
+          id: "pg",
+          name: "Pure PG",
+          volume: recipeResult.data.pgVolume,
+          weight: recipeResult.data.pgWeight,
+          color: PG_COLOR,
+        },
+        ...recipeResult.data.flavorings.map((flavor, index) => ({
+          id: `flavor-${flavor.id || index}`,
+          name: flavor.name || `Flavor-${index}`,
+          volume: flavor.volume,
+          weight: flavor.weight,
+          color: getFlavorColor(index),
+        })),
+        {
+          id: "nicotine",
+          name: "Nicotine Base",
+          volume: recipeResult.data.nicotineBaseVolume,
+          weight: recipeResult.data.nicotineBaseWeight,
+          color: NICOTINE_COLOR,
+        },
+      ]
+    : []
+
   return (
     <Card>
       <CardSectionHeader
-        number={2}
+        number={4}
         header="Recipe Result"
         description="Calculated ingredient amounts for your e-liquid"
       />
+
       <CardContent>
-        <div className="grid min-h-48 grid-cols-2 rounded-lg border bg-muted">
-          <RecipeBottle totalVolume={100} ingredients={ingredients} />{" "}
-          <div>col2</div>
-        </div>
+        {recipeResult.success ? (
+          <div className="grid min-h-48 grid-cols-2 rounded-lg border bg-muted p-3">
+            <RecipeBottle
+              ingredients={ingredients}
+              recipeResultData={recipeResult.data}
+            />
+            <IngredientsTable
+              ingredients={ingredients}
+              totalVolume={recipeResult.data.totalVolume}
+              totalWeight={recipeResult.data.totalWeight}
+            />
+          </div>
+        ) : (
+          <p className="text-sm text-destructive">{recipeResult.error}</p>
+        )}
       </CardContent>
     </Card>
   )
